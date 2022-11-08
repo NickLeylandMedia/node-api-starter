@@ -1,42 +1,52 @@
+/* Import Express Middleware */
 import { Request, Response, NextFunction } from "express";
 
-const addMeal = async (req: Request, res: Response, next: NextFunction) => {
-  return res.json({ message: "New meal posted" });
+/* Controller Functions */
+//Add Item to Database
+const addItem = async (req: Request, res: Response, next: NextFunction) => {
+  return res.json({ message: "New item posted" });
 };
 
-const deleteAllMeals = async (
+//Delete All Items from Database
+const deleteAllItems = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  return res.json({ message: "All meals deleted" });
+  return res.json({ message: "All items deleted" });
 };
 
-const deleteOneMeal = async (
+//Delete One Item from Database
+const deleteOneItem = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  return res.json({ message: "Meal deleted" });
+  return res.json({ message: "Item deleted" });
 };
 
-const getAllMeals = async (req: Request, res: Response, next: NextFunction) => {
-  return res.json({ message: "Here are the meals!" });
+//Get All Items from Database
+const getAllItems = async (req: Request, res: Response, next: NextFunction) => {
+  return res.json({ message: "Here are the items!" });
 };
 
-const getOneMeal = async (req: Request, res: Response, next: NextFunction) => {
-  return res.json({ message: "Here is the meal!" });
+//Get One Item from Database
+const getOneItem = async (req: Request, res: Response, next: NextFunction) => {
+  return res.json({ message: "Here is the item!" });
 };
 
-const modifyMeal = async (req: Request, res: Response, next: NextFunction) => {
-  return res.json({ message: "Meal modified" });
+//Update One Item in Database
+const modifyItem = async (req: Request, res: Response, next: NextFunction) => {
+  return res.json({ message: "Item modified" });
 };
+/* End Controller Functions */
 
+/* Export Controller Functions */
 export default {
-  addMeal,
-  deleteAllMeals,
-  deleteOneMeal,
-  getAllMeals,
-  getOneMeal,
-  modifyMeal,
+  addItem,
+  deleteAllItems,
+  deleteOneItem,
+  getAllItems,
+  getOneItem,
+  modifyItem,
 };

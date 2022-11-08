@@ -1,19 +1,19 @@
 import express from "express";
 
-import mealController from "../controllers/sample_cont";
+import sampleController from "../controllers/sample_cont";
 
 const router = express.Router();
 
-router.post("/api/meals", mealController.addMeal);
+router.post("/api/items", sampleController.addItem);
 
-router.delete("/api/meals/", mealController.deleteAllMeals);
+router.delete("/api/items/", sampleController.deleteAllItems);
 
-router.delete("/api/meals/:name", mealController.deleteOneMeal);
+router.delete("/api/items/:id", sampleController.deleteOneItem);
 
-router.get("/api/meals", mealController.getAllMeals);
+router.get("/api/items", sampleController.getAllItems);
 
-router.get("/api/meals/:name", mealController.getOneMeal);
+router.get("/api/items/:id", sampleController.getOneItem);
 
-router.put("/api/meals/:name", mealController.modifyMeal);
+router.put("/api/items/:id", sampleController.modifyItem);
 
 export default router;
