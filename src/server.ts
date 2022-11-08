@@ -17,7 +17,7 @@ const app = express();
 dotenv.config();
 
 /* Env Variables */
-const PORT = process.env.PORT || 3042;
+const PORT = Number(process.env.PORT) || 3042;
 
 /* Middleware Initialization */
 //Express JSON
@@ -26,7 +26,7 @@ app.use(express.json());
 //Routes
 app.use("/", mealRoutes);
 
-/* App Listener */
-app.listen(process.env.PORT, () => {
+//App Listener
+app.listen(PORT, "127.0.0.1", () => {
   console.log(`Server initialized and running on port ${PORT}`);
 });
