@@ -1,4 +1,6 @@
 /*  Imports  */
+//CORS
+import cors from "cors";
 //Express
 import express from "express";
 //DotENV
@@ -20,6 +22,9 @@ dotenv.config();
 const PORT = Number(process.env.PORT) || 3042;
 
 /* Middleware Initialization */
+//CORS
+app.use(cors());
+
 //Express JSON
 app.use(express.json());
 

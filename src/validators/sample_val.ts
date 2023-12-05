@@ -1,22 +1,37 @@
-import { Validator, DetailedValue } from "node-data-validator";
+//Import Statement
+import Ajv from "ajv";
 
-//Validate 'Add Item' Request
-const valAddGirl = (req: any) => {
-  //Validator Data Model
-  const model = {
-    name: new DetailedValue(String, { required: true }),
-    alias: new DetailedValue(String, { required: false }),
-    picture: new DetailedValue(String, { required: false }),
-    primary_hair_color: new DetailedValue(String, { required: true }),
-    dob: new DetailedValue(String, { required: false }),
-    breast_class: new DetailedValue(String, { required: true }),
-    breast_size: new DetailedValue(String, { required: false }),
-    body_type: new DetailedValue(String, { required: true }),
-    retired: new DetailedValue(Boolean, { required: false }),
-  };
+//Ajv Instance
+const ajv = new Ajv();
 
-  //Validation Check
-  return Validator(req, model);
+//Schema
+const sceneSchema = {
+  type: "object",
+  properties: {
+    name: { type: "string" },
+    picture: { type: ["string", "null"] },
+    description: { type: ["string", "null"] },
+    release_date: { type: ["string", "null"] },
+    release_year: { type: ["string", "null"] },
+  },
+  required: ["name"],
+  additionalProperties: false,
 };
 
-export { valAddGirl };
+/* Validator Functions */
+function validateScene(body: any) {
+  //Validator
+  const sceneValidator = ajv.compile(sceneSchema);
+  //Validate
+  const valid = sceneValidator(body);
+  //Function Returns
+  if (valid) {
+    return true;
+  }
+  if (!valid) {
+    return false;
+  }
+}
+/* End Validator Functions */
+
+export { validateScene };
