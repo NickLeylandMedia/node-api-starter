@@ -1,13 +1,29 @@
 import { Pool } from "pg";
 
-//Initialize DB Connection
+import dotenv from "dotenv";
+
+//Initialize ENV Variables
+dotenv.config();
+const USERNAME = process.env.DB_USER;
+const PASSWORD = process.env.DB_PASS;
+const HOST = process.env.DB_HOST;
+const PORT = Number(process.env.DB_PORT);
+const DATABASE = process.env.DB_NAME;
+const CONNSTRING = process.env.DB_STRING;
+
+//Initialize DB Connection (Params)
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "food-review-base",
-  password: "",
-  port: 5432,
+  user: USERNAME,
+  host: HOST,
+  database: DATABASE,
+  password: PASSWORD,
+  port: PORT,
 });
+
+//Initialize DB Connection (URL)
+// const pool = new Pool({
+//   connectionString: DBCONN,
+// });
 
 /* Query Functions */
 //Callback Query
