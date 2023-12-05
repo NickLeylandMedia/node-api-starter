@@ -1,5 +1,6 @@
 import { Pool } from "pg";
 
+//Initialize DB Connection
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
@@ -8,6 +9,15 @@ const pool = new Pool({
   port: 5432,
 });
 
-const query = (text: any, params: any): any => pool.query(text, params);
+/* Query Functions */
+//Callback Query
+const cbquery = (text: any, params: any, callback: any): any => {
+  return pool.query(text, params, callback);
+};
+//Promise Query
+const query = (text: any, params: any): any => {
+  return pool.query(text, params);
+};
+/* End Query Functions */
 
-export default { pool, query };
+export default { pool, query, cbquery };
